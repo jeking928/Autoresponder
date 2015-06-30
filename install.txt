@@ -1,0 +1,476 @@
+Name
+====
+Autoresponder+
+
+Version 
+=================
+2.4 
+
+=================
+Zen Cart Versions 1.5.0 - 1.5.1
+
+Updated By:
+=================
+CountryCharm
+Date: 5/17/2013
+
+Author
+=================
+Steven300
+
+Description
+=================
+
+This mod allows you to send up to 3 preset emails to your customers after their order has finished.
+
+You choose:
+How many days after
+Email subject and message
+
+Features:
+Supports text and html emails
+Test mode
+Include customer name (various options)
+Log sent emails
+Subscribed option
+Update order status
+Time validation
+Product Restriction
+Location Restriction
+Include product details
+Include discount coupon
+Receive admin copy
+
+You choose the order status orders must have for the email to send. So if the order has been
+refunded or has not yet completed, customers are not bothered by an irrelevant email.
+
+Requires a daily cron job to be scheduled.
+
+For support/feedback, search the forum for "Autoresponder+ [support thread]"
+
+
+New files
+=========
+autoresponder.php
+admin/includes/extra_datafiles/auto_responder.php
+admin/includes/english/extra_definitions/autoresponder_definitions.php
+includes/extra_datafiles/autoresponder.php
+includes/languages/english/extra_definitions/autoresponder.php
+email/email_template_autoresponder.html
+
+
+Compatibility
+=============
+
+This contribution is compatible with Zen Cart v1.5.0 v1.5.1
+
+IMPORTANT:
+============
+Zen Cart v1.5.0 v1.5.1 Not backwards compatible.
+
+
+Affects DB
+==========
+Creates new records in 'configuration_group' and 'configuration' tables.
+
+
+Install
+=======
+
+0. Backup site files and database.
+
+1. Using Admin -> Tools -> Install SQL Patches, run the included Install.sql
+   For best results, copy-and-paste the code into the query field and press 'Send'.
+
+2. Upload autoresponder.php to your Zen Cart root directory.
+   Upload the "email" folder and the "includes" folder to your Zen Cart root directory.
+
+3. Go to Admin -> Configuration -> Autoresponder+. Ensure Test Mode is on.
+
+4. Learn how the mod functions. (See How it Works section). Personalise settings.
+
+5. Test the mod to confirm it works how you expect. (See Testing section)
+
+6. Set up a daily cron job. (See Cron section)
+
+
+How it Works
+============
+
+Autoresponder+ is run whenever autoresponder.php is loaded in a web browser. This file queries the database 
+and sends out the emails.
+
+Only *exact* matches work. If you define a follow up email for pending 6 days, when you run autoresponder+ no one who has been 
+pending for more than 6 days will get the email. The same applies for less than 6 days.
+Therefore you should run the file EVERY day, ONCE a day.
+
+If you run the file more than this, customers will receive repeat emails. (See Time Validation setting)
+If you run the file less than this, some emails may be missed.
+
+It is ***STRONGLY*** recommended that you rename autoresponder.php to something very hard to guess.
+
+*Whenever* the file is run, "Autoresponder successfully loaded. End of message." will be displayed. This is more 
+a confirmation that there are no PHP syntax errors, as the message is output at the very base of the file.
+
+
+
+******************************* The configuration settings explained *******************************
+
+<<Enable Autoresponder+>>
+Self Explanatory
+
+<<Enable Preset>>
+3 emails are currently supported. Choose which ones you want enabled.
+
+<<Mode>>
+In test mode, all emails will be sent to the store owner. You will see the customer's name inside the email (if configured).
+The customer won't receive anything at all. When in live mode, the mod is running normally.
+
+<<Query>>
+Originally this contribution only sent post-order emails. A new query feature has now been added.
+One query called 'account-no-order' allows you to send out emails to customers who have created an account but have never created an order.
+You could use this to send them a tempting discount coupon or even gain some valuable feedback.
+Another possible query is the standard 'account' query. This sends emails to customers who have simply created an account, regardless of whether
+they have ever created an order or not.
+
+<<Order Status ID>>
+Emails will only send for orders with the defined status. 3 is normal because that's the 'Delivered' status.
+You can change the status to anything you like.
+If using Google Checkout, you will likely need to add additional statuses. You can do this by separating each status with a comma.
+For example: 3, 102, 104
+When using the 'account' query, this field is ignored.
+
+<<Post Order Status ID>>
+Entering an order status ID here will configure the mod to update the order's status ID with that of the setting once the mod has finished.
+This is useful for record keeping, as you can easily check on the Zen Cart orders page whether Autoresponder+ executed for a particular order.
+The order status will only be updated if:
+a) an email is actually triggered.
+b) the ID is different to the ID to trigger
+When using the 'account' query, this field is ignored.
+
+<<Days After>>
+When you update an order in the order admin area to 3, or whatever you have defined, it is the 'days after' this date.
+For example, if an order was dispatched on the 7th July 2008 and today is the 12th July 2008, 5 days would trigger this.
+When using the 'account' query, it is the days after the account was created.
+
+<<Subscribed>>
+If true, only customers who have selected to receive the newsletter will receive the email.
+If false, it is irrelevant whether the customer has selected to receive the newsletter.
+
+<<Restrict Location>>
+A new feature whereby emails are only sent to customers residing in the specified location, whether it be zone or country.
+It is also possible to exclude a particular location.
+
+For example, you may want to send a slightly diferent email depending on the country the customer is from. You might localise 
+the spelling, say an extra thank you if they order from abroad, provide a different discount coupon, or even write in their own language.
+You may only want to send emails out to those living in the same zone or country as you.
+
+Scenario: You are based in the UK and deliver to the UK. You also deliver to the US, Canada, Ireland, and Europe.
+You want to send an email to those ordering from the UK, but a slightly different email to everywhere else.
+To do this, setup Preset #1 to restrict 'to country' and then enter 'United Kingdom'.
+For Preset #2, type in the email for everywhere else and select this to restrict 'from country' and enter 'United Kingdom'.
+
+<<Location to Restrict>>
+Enter the location you want emails restricted to/from. These should be the locations as selectable on your site's sign-up form.
+e.g. Grampian, Ireland, Utah, United Kingdom, Devon, Mexico etc
+The customer's address used for restriction is their 'default' address, so not always the address the order is shipped to.
+
+<<Subject>>
+Self Explanatory
+
+<<Include Customer Name>>
+Option to display the customer's name at the beginning of the email. Choose '0' to not display their name. In terms of formatting,
+there will be a paragraph break after their name and before the main message.
+
+<<Include Product Details>>
+Option to include in the email details of the items ordered.
+Details include the name and quantity of each item ordered. For more information, see the example messages at the bottom of this file.
+When using the 'account' query, this field is ignored.
+
+<<Product Details as Links>>
+A feature to make the product information in emails clickable. Useful for providing direct links for product review requests.
+
+<<Restrict Product>>
+You can set it so that an order related email will only send if the order contains at least one of the defined product IDs.
+Only one of the product IDs need to match.
+You can identify a product's ID by going to Admin -> Catalog -> Categories/Products and looking up the product.
+When using the 'account' query, this field is ignored.
+Example entries:
+87
+9, 40
+61, 155, 93, 320
+
+<<Include Discount Coupon>>
+This is a feature to include an autogenerated, unique discount coupon in the email. Customers can now receive their very own coupon following each order.
+If this feature is configured, the autoresponder+ mod, when executed, will create a new coupon and insert it into the database.
+The coupon start date will be the day that the email is sent and the expiry date will be one year after. You can change this to suit your preferences.
+For example, you could configure expiry to be just 2 weeks to try to force an immediate sale.
+Search for "+1 year" in autoresponder.php. You could change it to "+2 week" or "+6 month". There will be 3 instances.
+To use this feature, first you will need to create a discount coupon as normal in the Zen Cart admin panel.
+Admin -> Gift Certificate/Coupons -> Coupon Admin
+Autoresponder+ when executed will look at this coupon and replicate its settings for the autogenerated coupons.
+You should never use this default coupon or delete it. Be sure to enter the coupon name and description.
+The code field is unimportant. Autoresponder+ will generate its own random code.
+Once you have created the default coupon, paste its coupon code into autoresponder+.
+Then in the email message, simply type anywhere the phrase: [coupon]
+This phrase will be replaced in the email by the new, autogenerated coupon code.
+
+<<Pre Text Message>>
+Enter the message for text emails which you want displayed *before* the product details are shown.
+In terms of formatting, there will be a paragraph break after this message and before the product details.
+If not including product details, simply enter the whole message here.
+Any html used here will be ignored. Hitting the Enter key will start a new paragraph. To insert a link,
+simply insert the URL as http://www.zen-cart.com/
+
+<<Post Text Message>>
+Enter the message for text emails which you want displayed *after* the product details are shown.
+In terms of formatting, there will be a paragraph break after the product details and before this message.
+If not including product details, you will need to delete the "Enter email here.." text so it is blank.
+Any html used here will be ignored. Hitting the Enter key will start a new paragraph. To insert a link,
+simply insert the URL as http://www.zen-cart.com/
+
+<<Pre HTML Message>>
+Enter the message for html emails which you want displayed *before* the product details are shown.
+In terms of formatting, there will be a paragraph break after this message and before the product details.
+If not including product details, simply enter the whole message here.
+Hitting the Enter key will be ignored. HTML must be used, e.g. <p /> or <br />.
+The html email will contain your usual header logo at the top, and the usual spam-disclaimer message at the base.
+To insert a link, use <a href="http://www.zen-cart.com/">Text to be displayed</a>
+
+<<Post HTML Message>>
+Enter the message for html emails which you want displayed *after* the product details are shown.
+In terms of formatting, there will be a paragraph break after the product details and before this message.
+If not including product details, you will need to delete the "Enter email here.." text so it is blank.
+Hitting the Enter key will be ignored. HTML must be used, e.g. <p /> or <br />.
+The html email will contain your usual header logo at the top, and the usual spam-disclaimer message at the base.
+To insert a link, use <a href="http://www.zen-cart.com/">Text to be displayed</a>
+
+Note: As a minimum, you should fill in *both* the Pre Text Message and Pre HTML Message.
+
+<<Time Validation>>
+When set to true, autoresponder+ (when loaded) gets the current time and checks to see if this time is between the defined Start Time and End Time.
+If it is, autoresponder+ will run normally. If it isn't, autoresponder+ will not run.
+Such validation prevents both accidental and malicious loading.
+For example, you set the cron job to load the file at 12.35pm each day.
+
+<<Start Time>>
+Using the example above, you should enter something like 12:34:00
+
+<<End Time>>
+Using the example above, you should enter something like 12:36:00
+
+<<Log Emails>>
+When enabled, a text file is created which lists every time autoresponder.php queries the database. (Autoresponder must be 'Enabled' and 
+at least one preset must be enabled to log). The log is added to each time. The log also lists details of every email sent (excluding admin copies).
+You can delete the log now and again if it gets too large.
+
+<<Log Directory>>
+Directory where log is stored. Make sure the directory exists and is writeable. Example /var/www/html/temp/
+
+<<Admin Copy>>
+When enabled, store owner receives a copy of the email. The email is the same as the email you would have received if in test mode.
+Copies are only sent when in live mode.
+
+<<Admin Email Address>>
+You can change the email address where test emails are sent and where copies are sent when in live mode.
+If left blank, the default store owner email address is used.
+You should use this to test out different email addresses before going live.
+
+
+To translate or change any of the greetings e.g. "Hello", "Dear" etc, simply edit the following file:
+includes/languages/english/extra_definitions/autoresponder.php
+
+*******************************************************************************************************
+
+
+Testing
+=======
+
+*It is highly recommended that you test the mod before using it properly*
+
+First ensure Test Mode is on.
+
+Then enable the mod.
+
+Then go and lookup when your last order was *completed* (or last account was created)
+
+Set the 'Days After' so that it triggers.
+
+Then in your web browser, navigate to http://www.your_domain.com/autoresponder.php
+
+You should then receive the email(s).
+
+IMPORTANT: If using the "Post Order Status ID" setting, you should be aware that this works while in test mode!
+If you want to safely test this feature, you should create and use a test order instead.
+
+If you want to test out different email addresses, simply change the 'Admin Email Address' field in Autoresponder+ admin.
+
+(Changing this also alters the email address for where admin copies are sent in live mode)
+
+
+Cron
+====
+
+You need to set up a cron job to run autoresponder.php *** ONCE a day, EVERY day ***
+
+A cron job is a time-based task that your server is able to execute.
+
+You may have easy access to do this (e.g. cPanel), or you may have to ask your host to give you access to some other programme or console.
+
+Either way, your host can help you.
+
+My host configured the cron job for me (thanks TerraNetwork) so I have no real information here.
+
+Please don't populate the mod's support thread with cron job questions. This falls under your host's responsibility.
+
+
+	An alternative to cron
+	----------------------
+
+	Do you have a web browser which you rarely use? If not, download one. Firefox, Opera, Chrome etc
+
+	Set the browser's homepage to point at the file. (File should be in root)
+
+	Set your operating system to schedule a daily task to open the browser at a time when your computer is often on.
+
+
+	Another alternative to cron
+	---------------------------
+
+	Use a service like WebCron.org
+
+
+
+Upgrade
+=======
+
+1. Copy down personalised settings
+
+2. Uninstall
+
+3. Install new version
+
+4. Re-apply personalised settings
+
+
+Uninstall
+=========
+
+Delete these files:
+autoresponder.php
+admin/includes/extra_datafiles/auto_responder.php
+admin/includes/english/extra_definitions/autoresponder_definitions.php
+includes/extra_datafiles/autoresponder.php
+includes/languages/english/extra_definitions/autoresponder.php
+email/email_template_autoresponder.html
+
+Using Admin -> Tools -> Install SQL Patches, run the included Uninstall.sql
+For best results, copy-and-paste the code into the query field and press 'Send'.
+
+Delete the log (if used).
+
+
+History
+=======
+
+1. Initial version 						1.0 		16.07.2008
+
+2. Adds subscribed option					1.1		04.08.2008
+   Adds multiple presets
+   Adds time validation
+   Fixes table bug
+
+3. Adds 'account' queries					1.2		11.08.2008
+   Fixes typo in preset #2
+
+4. Location Restriction						1.3		27.08.2008
+   More robust queries
+   Compatibility notice
+
+5. Extends Restriction Feature					1.3.1		28.08.2008
+
+6. Extends Customer Names					1.3.2		03.09.2008
+
+7. Google Checkout compatible					1.4		19.03.2009
+
+8. Include product details					2.0		23.03.2009
+   Change owner email in admin
+   Customise greetings
+
+9. Include discount coupon					2.1		02.05.2009
+   Product details as links
+
+10. Direct link to review					2.1a		08.05.2009
+
+11. Fixes bug with html email when no name configured		2.2		02.07.2009
+    (Credit goes to Zen Cart forum member DLLong)
+
+12. Account emails can be restricted by location		2.3		16.09.2009
+    Order status can be automatically updated
+    Restrict emails by product
+    Fixes coupon bug (coupon created despite no email sent)
+    Code clean up
+    Full source code comments
+	
+13. Updated to run on Zen Cart Versions 1.5.0 - 1.5.1	/  2.4   5/17/2013
+
+
+Example Text Message
+====================
+
+Thank you for your recent purchase from yoursite.com.
+
+We invite you to submit a review for the products you purchased. Your input will help customers choose the best products at yoursite.com.
+
+Our system shows that you ordered the following items:
+
+1x SWAT 3: Close Quarters Battle
+1x Disciples: Sacred Lands
+
+To submit a review, please now visit http://www.yoursite.com, select the product(s) you purchased, and click the Write a Review button.
+
+Sincerely,
+
+Owner
+(Your Site)
+
+
+Example HTML Message
+====================
+
+Thank you for your recent purchase from yoursite.com.
+<p />
+We invite you to submit a review for the products you purchased. Your input will help customers choose the best products at yoursite.com.
+<p />
+Our system shows that you ordered the following items:
+
+1x SWAT 3: Close Quarters Battle
+1x Disciples: Sacred Lands
+
+To submit a review, please now visit <a href="http://www.yoursite.com/">Your Site</a>, select the product(s) you purchased, and click the Write a Review button.
+<p />
+Sincerely,
+<p />
+Owner<br />
+(Your Site)
+
+
+
+DISCLAIMER
+==========
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+(LICENSE) along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+Installation of this contribution is done at your own risk.
+Backup your Zen Cart database and any and all applicable files before proceeding.
