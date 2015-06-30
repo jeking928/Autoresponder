@@ -1,7 +1,7 @@
 <?php
 /**
  * Autoresponder+
- * Version 2.4
+ * Version 2.5
  * By Steven300
  * @copyright Portions Copyright 2004-2008 Zen Cart Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -505,39 +505,39 @@ $preset="preset #1";
 		
 		//Customer name options for html email		
 		if ($this_auto_include_name == '0') {
-		$html_message = $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '1') {
-		$html_message = $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '2') {
-		$html_message = $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '3') {
-		$html_message = AUTO_GREETING_HI . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '4') {
-		$html_message = AUTO_GREETING_HI . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '5') {
-		$html_message = AUTO_GREETING_HELLO . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '6') {
-		$html_message = AUTO_GREETING_HELLO . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '7') {
-		$html_message = $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '8') {
-		$html_message = $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '9') {
-		$html_message = AUTO_GREETING_HI . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '10') {
-		$html_message = AUTO_GREETING_HI . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '11') {
-		$html_message = AUTO_GREETING_HELLO . " " . $words[0]  . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $words[0]  . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '12') {
-		$html_message = AUTO_GREETING_HELLO . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '13') {
-		$html_message = AUTO_GREETING_DEAR . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '14') {
-		$html_message = AUTO_GREETING_DEAR . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '15') {
-		$html_message = AUTO_GREETING_DEAR . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '16') {
-		$html_message = AUTO_GREETING_DEAR . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		
 		}
 		
@@ -1178,39 +1178,39 @@ $preset="preset #2";
 		
 		//Customer name options for html email		
 		if ($this_auto_include_name == '0') {
-		$html_message = $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '1') {
-		$html_message = $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '2') {
-		$html_message = $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '3') {
-		$html_message = AUTO_GREETING_HI . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '4') {
-		$html_message = AUTO_GREETING_HI . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '5') {
-		$html_message = AUTO_GREETING_HELLO . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '6') {
-		$html_message = AUTO_GREETING_HELLO . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '7') {
-		$html_message = $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '8') {
-		$html_message = $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '9') {
-		$html_message = AUTO_GREETING_HI . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '10') {
-		$html_message = AUTO_GREETING_HI . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '11') {
-		$html_message = AUTO_GREETING_HELLO . " " . $words[0]  . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $words[0]  . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '12') {
-		$html_message = AUTO_GREETING_HELLO . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '13') {
-		$html_message = AUTO_GREETING_DEAR . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '14') {
-		$html_message = AUTO_GREETING_DEAR . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '15') {
-		$html_message = AUTO_GREETING_DEAR . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '16') {
-		$html_message = AUTO_GREETING_DEAR . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		
 		}
 		
@@ -1849,39 +1849,39 @@ $preset="preset #3";
 		
 		//Customer name options for html email		
 		if ($this_auto_include_name == '0') {
-		$html_message = $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '1') {
-		$html_message = $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '2') {
-		$html_message = $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '3') {
-		$html_message = AUTO_GREETING_HI . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '4') {
-		$html_message = AUTO_GREETING_HI . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '5') {
-		$html_message = AUTO_GREETING_HELLO . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '6') {
-		$html_message = AUTO_GREETING_HELLO . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '7') {
-		$html_message = $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '8') {
-		$html_message = $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '9') {
-		$html_message = AUTO_GREETING_HI . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '10') {
-		$html_message = AUTO_GREETING_HI . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HI . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '11') {
-		$html_message = AUTO_GREETING_HELLO . " " . $words[0]  . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $words[0]  . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '12') {
-		$html_message = AUTO_GREETING_HELLO . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_HELLO . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '13') {
-		$html_message = AUTO_GREETING_DEAR . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $words[0] . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '14') {
-		$html_message = AUTO_GREETING_DEAR . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $name . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '15') {
-		$html_message = AUTO_GREETING_DEAR . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $words[0] . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		} else if ($this_auto_include_name == '16') {
-		$html_message = AUTO_GREETING_DEAR . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
+		$html_message['EMAIL_MESSAGE_HTML'] = AUTO_GREETING_DEAR . " " . $name . "," . "<p />" . $this_auto_message_html_1 . $product_details_html . $this_auto_message_html_2;
 		
 		}
 		

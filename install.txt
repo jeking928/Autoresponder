@@ -4,15 +4,15 @@ Autoresponder+
 
 Version 
 =================
-2.4 
+2.5
 
 =================
-Zen Cart Versions 1.5.0 - 1.5.1
+Zen Cart Versions 1.5.x
 
 Updated By:
 =================
-CountryCharm
-Date: 5/17/2013
+jeking
+Date: 6/30/2015
 
 Author
 =================
@@ -62,11 +62,11 @@ email/email_template_autoresponder.html
 Compatibility
 =============
 
-This contribution is compatible with Zen Cart v1.5.0 v1.5.1
+This contribution is compatible with Zen Cart v1.5.x
 
 IMPORTANT:
 ============
-Zen Cart v1.5.0 v1.5.1 Not backwards compatible.
+Not backwards compatible.
 
 
 Affects DB
@@ -413,6 +413,8 @@ History
     Full source code comments
 	
 13. Updated to run on Zen Cart Versions 1.5.0 - 1.5.1	/  2.4   5/17/2013
+
+14. Fixed issue where first character of sent email would be replaced with 'e'.		2.5	6/30/2015
 
 
 Example Text Message
